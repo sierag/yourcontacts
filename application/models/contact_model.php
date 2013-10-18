@@ -28,14 +28,14 @@ class Contact_model extends CI_Model
 
     public function get_data($uid, $name)
     {
-        $contact = $this->db->select('name, email, phone')
+        $contact = $this->db->select('name, street, streetnr, zipcode, city, country, email, phone')
             ->get_where('contacts', array('uid' => $uid, 'name' => $name))
             ->row_array();
 
         return $contact;
     }
 
-    public function add($name, $email, $phone, $uid)
+    public function add($name, $street, $streetnr, $zipcode, $city, $country, $email, $phone, $uid)
     {
         $query = $this->db->get_where('contacts', array('name' => $name, 'uid' => $uid));
         
@@ -43,7 +43,17 @@ class Contact_model extends CI_Model
             return FALSE;
         }
 
-        $this->db->insert('contacts', array('name' => $name, 'email' => $email, 'phone' => $phone, 'uid' => $uid));
+        $this->db->insert('contacts', array(
+        	'name' => $name, 
+        	'street' => $street, 
+        	'streetnr' => $streetnr, 
+        	'zipcode' => $zipcode, 
+        	'city' => $city, 
+        	'country' => $country, 
+        	'email' => $email, 
+        	'phone' => $phone, 
+        	'uid' => $uid
+        ));
 
         $this->db->set('contacts', 'contacts+1', FALSE)
             ->where('uid', $uid)
@@ -61,9 +71,12 @@ class Contact_model extends CI_Model
             ->update('users');
     }
 
-    public function update($name, $email, $phone, $uid)
+    public function update($name, $street, $streetnr, $zipcode, $city, $country, $email, $phone, $uid)
     {
-        $this->db->where(array('uid' => $uid, 'name' => $name))
-            ->update('contacts', array('email' => $email, 'phone' => $phone));        
+        $this->db->where(array('uid' => $uid, 'name' => $name))->update('contacts', array('street' => $street, 
+        	'streetnr' => $streetnr, 
+        	'zipcode' => $zipcode, 
+        	'city' => $city, 
+        	'country' => $country,'email' => $email, 'phone' => $phone));        
     }
 }

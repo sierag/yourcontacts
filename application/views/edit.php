@@ -13,8 +13,15 @@
           <option value="<?=$contact['name']; ?>"><?=$contact['name']; ?></option>
         <? endforeach; ?>
         </select>
-        <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" value="<?=$firstcontact['email']?>">
-        <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" value="<?=$firstcontact['phone']?>">
+        
+        <input type="text" name="street" class="input-block-level" placeholder="Street" maxlength="50" value="<?=$firstcontact['street']?>"/>
+        <input type="text" name="streetnr" class="input-block-level" placeholder="StreetNr" maxlength="255" value="<?=$firstcontact['streetnr']?>"/>
+        <input type="text" name="zipcode" class="input-block-level" placeholder="Zipcode" maxlength="10" value="<?=$firstcontact['zipcode']?>"/>
+        <input type="text" name="city" class="input-block-level" placeholder="City" maxlength="100" value="<?=$firstcontact['city']?>"/>
+        <input type="text" name="country" class="input-block-level" placeholder="Country" maxlength="100" value="<?=$firstcontact['country']?>"/>
+        
+        <input type="email" name="email" class="input-block-level" placeholder="Email" maxlength="40" value="<?=$firstcontact['email']?>">
+        <input type="text" name="phone" class="input-block-level" placeholder="Phone" maxlength="15" value="<?=$firstcontact['phone']?>">
         <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
@@ -76,6 +83,11 @@ $(document).ready(function() {
         var json = $.parseJSON(rdata);
         
         if(json.isSuccessful) {
+            $('#formEdit input[name="street"]').val(json.street);
+            $('#formEdit input[name="streetnr"]').val(json.streetnr);
+            $('#formEdit input[name="zipcode"]').val(json.zipcode);
+            $('#formEdit input[name="city"]').val(json.city);
+            $('#formEdit input[name="country"]').val(json.country);
             $('#formEdit input[name="email"]').val(json.email);
             $('#formEdit input[name="phone"]').val(json.phone);
         } else {

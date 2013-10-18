@@ -8,9 +8,14 @@
   <div class="row">
     <div class="span4">
       <form id="formAdd" class="well" accept-charset="utf-8">
-        <input type="text" name="name" class="input-block-level" value="Name" placeholder="Name" required maxlength="40" autofocus />
-        <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" />
-        <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" />
+        <input type="text" name="name" class="input-block-level" placeholder="Name" required maxlength="40" autofocus />
+        <input type="text" name="street" class="input-block-level" placeholder="Street" maxlength="50" />
+        <input type="text" name="streetnr" class="input-block-level" placeholder="StreetNr" maxlength="255" />
+        <input type="text" name="zipcode" class="input-block-level" placeholder="Zipcode" maxlength="10" />
+        <input type="text" name="city" class="input-block-level" placeholder="City" maxlength="100" />
+        <input type="text" name="country" class="input-block-level" placeholder="Country" maxlength="100" />
+        <input type="email"name="email" class="input-block-level" placeholder="Email" maxlength="40" />
+        <input type="text" name="phone" class="input-block-level" placeholder="Phone" maxlength="15" />
         <button type="submit" class="btn btn-success btn-large">
         <i class="icon-plus icon-white"></i> Add Contact</button>
       </form>

@@ -30,15 +30,20 @@ class Site extends CI_Controller
         sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
-        $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-        $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
             $message = "<strong>Adding</strong> failed!";
             $this->json_response(FALSE, $message);
         } else {
-            $is_added = $this->contact_model->add($this->input->post('name'), $this->input->post('email'), 
-                $this->input->post('phone'), $this->session->userdata('uid'));
+            $is_added = $this->contact_model->add($this->input->post('name')
+            , $this->input->post('street')
+            , $this->input->post('streetnr')
+            , $this->input->post('zipcode')
+            , $this->input->post('city')
+            , $this->input->post('country')
+            , $this->input->post('email')
+            , $this->input->post('phone')
+            , $this->session->userdata('uid'));
             
             if ($is_added) {
                 $message = "<strong>".$this->input->post('name')."</strong> has been added!";
@@ -103,15 +108,18 @@ class Site extends CI_Controller
         sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
-        $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-        $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
             $message = "<strong>Editing</strong> failed!";
             $this->json_response(FALSE, $message);
         } else {
-            $this->contact_model->update($this->input->post('name'), $this->input->post('email'),
-                $this->input->post('phone'), $this->session->userdata('uid'));
+            $this->contact_model->update($this->input->post('name')
+            , $this->input->post('street')
+            , $this->input->post('streetnr')
+            , $this->input->post('zipcode')
+            , $this->input->post('city')
+            , $this->input->post('country')
+            , $this->input->post('email'),$this->input->post('phone'), $this->session->userdata('uid'));
             
             $message = "<strong>".$this->input->post('name')."</strong> has been edited!";      
             $this->json_response(TRUE, $message);
@@ -136,6 +144,11 @@ class Site extends CI_Controller
             } else {
                 echo json_encode(array(
                     'isSuccessful' => TRUE,
+                    'street' => $contact['street'],
+                    'streetnr' => $contact['streetnr'],
+                    'zipcode' => $contact['zipcode'],
+                    'city' => $contact['city'],
+                    'country' => $contact['country'],
                     'email' => $contact['email'],
                     'phone' => $contact['phone']
                 ));
