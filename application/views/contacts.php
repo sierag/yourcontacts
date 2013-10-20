@@ -3,18 +3,18 @@
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h2>Your Contacts</h2>
+    <h3>Contacts</h3>
   </div>
   <div class="row-fluid">
     <div class="span12">
       <table class="table table-striped table-bordered tablesorter" id="tcontacts">
         <thead>
           <tr>
-            <th><i class="icon-user"></i> Name</th>
-            <th><i class="icon-home"></i> Street</th>
+            <th class="hidden-phone"><i class="icon-user"></i> Name</th>
+            <th><i class="icon-home"></i> Address</th>
             <th class="hidden-tablet hidden-phone">Nr</th>
-            <th>Zipcode</th>
-            <th>City</th>
+            <th class="hidden-phone">Zipcode</th>
+            <th class="hidden-phone">City</th>
             <th class="hidden-phone"><i class="icon-flag"></i> Country</th>
             <th class="hidden-tablet hidden-phone"><i class="icon-envelope"></i> Email</th>
             <th class="hidden-tablet hidden-phone"><i class="icon-headphones"></i> Phone</th>
@@ -23,11 +23,18 @@
         <tbody>
         <? foreach($contacts as $contact): ?>
           <tr>
-            <td><?=$contact['name']; ?></td>
-            <td><span style="float:left"><?=$contact['street']; ?></span><span class="visible-tablet visible-phone" style="float:left">&nbsp;<?=$contact['streetnr']; ?></span></td>
+            <td class="hidden-phone"><?=$contact['name']; ?></td>
+            <td>
+            	<span class="visible-tablet visible-phone" style="float:left"><b><?=$contact['name']; ?></b>&nbsp;</span>
+            	<span style="float:left"><?=$contact['street']; ?></span>
+            	<span class="visible-tablet visible-phone" style="float:left">&nbsp;<?=$contact['streetnr']; ?></span>
+            	<span class="visible-tablet visible-phone" style="float:left">&nbsp;<?=$contact['zipcode']; ?></span>
+            	<span class="visible-tablet visible-phone" style="float:left">,&nbsp;<?=$contact['city']; ?></span>
+            	<span class="visible-tablet visible-phone" style="float:left">,&nbsp;<?=$contact['country']; ?></span>
+            </td>
             <td class="hidden-tablet hidden-phone"><?=$contact['streetnr']; ?></td>
-            <td><?=$contact['zipcode']; ?></td>
-            <td><?=$contact['city']; ?></td>
+            <td class="hidden-phone"><?=$contact['zipcode']; ?></td>
+            <td class="hidden-phone"><?=$contact['city']; ?></td>
             <td class="hidden-phone"><?=$contact['country']; ?></td>
             <td class="hidden-tablet hidden-phone"><?=$contact['email']; ?></td>
             <td class="hidden-tablet hidden-phone"><?=$contact['phone']; ?></td>

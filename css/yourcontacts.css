@@ -40,7 +40,6 @@ body {
   margin: 0;
 }
 .navbar .nav > li > a {
-  width: 75px;
   text-align: center;
 }
 .navbar .brand img{
@@ -49,4 +48,14 @@ body {
 .table-striped tbody > tr:nth-child(odd) > td,
 .table-striped tbody > tr:nth-child(odd) > th {
   background-color: #f5f5f5;
+}
+
+@media (max-width: 979px) {
+	.content { padding:0px;}
+	.page-header {margin:0px;}
+
+}
+
+@media (max-width: 480px) {
+	.content { padding:5px;}
 }

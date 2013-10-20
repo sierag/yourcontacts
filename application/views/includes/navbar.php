@@ -1,19 +1,17 @@
-<div class="navbar navbar-static-top">
+<div class="navbar navbar-static-top navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="<?=site_url('site')?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>"></a>
       <ul class="nav">
-        <li class="divider-vertical"></li>
-        <li id="nav-add"><?=anchor('site/add', 'Add'); ?></li>
-        <li class="divider-vertical"></li>
-        <li id="nav-delete"><?=anchor('site/delete', 'Delete'); ?></li>
-        <li class="divider-vertical"></li>
-        <li id="nav-edit"><?=anchor('site/edit', 'Edit'); ?></li>
-        <li class="divider-vertical"></li>
+        <li id="nav-add"><?=anchor('/', '<i class="icon-home"></i>'); ?></li>
+        <li id="nav-add"><?=anchor('site/add', '<i class="icon-plus"></i> Add'); ?></li>
+        <li id="nav-edit"><?=anchor('site/edit', '<i class="icon-pencil"></i> Edit'); ?></li>
+        <li id="nav-delete"><?=anchor('site/delete', '<i class="icon-trash"></i> Delete'); ?></li>
       </ul>
       <div class="pull-right">
-        <small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email')); ?> </small>
-        <a href="<?=site_url('login/logout'); ?>" class="btn btn-primary"><i class="icon-road icon-white"></i> Logout</a>
+        <ul class="nav">
+	     	<li class="hidden-phone"><small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email')); ?> </small></li>
+        	<li><a href="<?=site_url('login/logout'); ?>" class=""><i class="icon-road"></i> Logout</a></li>
+        </ul>
       </div>
     </div>
   </div>
